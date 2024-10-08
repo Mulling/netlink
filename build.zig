@@ -21,6 +21,7 @@ fn add_test(b: *std.Build, step: *std.Build.Step, t: Test) !void {
         test_case.root_module.addImport(t.mod_name.?, mod);
 
     const run_test_case = b.addRunArtifact(test_case);
+    run_test_case.has_side_effects = true;
 
     step.dependOn(&run_test_case.step);
 }
